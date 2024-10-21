@@ -1,15 +1,13 @@
-<h4>Filters</h4>
-
 <div class="button-container">
-  <button class="car-button">All</button>
-  <button class="car-button">Octavia</button>
-  <button class="car-button">Kamiq</button>
-  <button class="car-button">Superb</button>
-  <button class="car-button">Kodiaq</button>
+  <button class="car-button" (click)="filterCars('All')">All</button>
+  <button class="car-button" (click)="filterCars('Octavia')">Octavia</button>
+  <button class="car-button" (click)="filterCars('Kamiq')">Kamiq</button>
+  <button class="car-button" (click)="filterCars('Superb')">Superb</button>
+  <button class="car-button" (click)="filterCars('Kodiaq')">Kodiaq</button>
 </div>
 
 <div class="car-list">
-  <div *ngFor="let car of carModels" class="car-container">
+  <div *ngFor="let car of filteredCars; let i = index" class="car-container">
     <div class="car-card">
       <div class="car-info">
         <h3 class="car-model">{{ car.model }}</h3>
@@ -17,6 +15,6 @@
       </div>
       <div class="car-color" [style.backgroundColor]="car.color"></div>
     </div>
-    <button class="remove-button">Remove</button>
+    <button class="remove-button" (click)="removeCar(i)">Remove</button>
   </div>
 </div>

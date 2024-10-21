@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
-import { ApplicationConfig, Component } from '@angular/core';
-import { BehaviorSubject, distinct, map, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { map } from 'rxjs';
 
 export interface Car {
   id: string;
@@ -18,42 +18,32 @@ export interface Car {
   styleUrl: './cars.component.scss',
 })
 export class CarsComponent {
+  carModels: Car[] = [];
+  filteredCars: Car[] = [];
+
   constructor(private http: HttpClient) {
     this.fetchCars();
-    // this.fetchMeInfo();
   }
-
-  // public carModels: BehaviorSubject<any> = new BehaviorSubject([]);
-
-  carModels: any;
-
-  // fetchCarModels() {
-  //   this.http
-  //     .get<{ data: Car[] }>('http://localhost:5001/api/cars')
-  //     .pipe(
-  //       map((response) => {
-  //         return response.data.map((car) => car.model);
-  //       })
-  //     )
-  //     .subscribe((models) => (this.carModels = models));
-  // }
 
   fetchCars() {
     this.http
       .get<{ data: Car[] }>('http://localhost:5001/api/cars')
-      .pipe(
-        map((res) => {
-          return res.data;
-        })
-      )
-      .subscribe((cars) => ((this.carModels = cars), console.log(cars)));
+      .pipe(map((res) => res.data))
+      .subscribe((cars) => {
+        this.carModels = cars;
+        this.filteredCars = cars; // Initialize with all cars
+      });
   }
 
-  removeCar() {
-    this.http.delete('http://localhost:5001/api/cars');
+  filterCars(model?: string) {
+    if (model === 'All' || !model) {
+      this.filteredCars = this.carModels;
+    } else {
+      this.filteredCars = this.carModels.filter((car) => car.model === model);
+    }
   }
 
-  // fetchMeInfo() {
-  //   this.http.get('http://localhost:5001/api/cars').subscribe();
-  // }
+  removeCar(index: number) {
+    this.filteredCars.splice(index, 1);
+  }
 }
