@@ -1,0 +1,22 @@
+<h4>Filters</h4>
+
+<div class="button-container">
+  <button class="car-button">All</button>
+  <button class="car-button">Octavia</button>
+  <button class="car-button">Kamiq</button>
+  <button class="car-button">Superb</button>
+  <button class="car-button">Kodiaq</button>
+</div>
+
+<div class="car-list">
+  <div *ngFor="let car of carModels" class="car-container">
+    <div class="car-card">
+      <div class="car-info">
+        <h3 class="car-model">{{ car.model }}</h3>
+        <p class="car-engine">{{ car.engine }}</p>
+      </div>
+      <div class="car-color" [style.backgroundColor]="car.color"></div>
+    </div>
+    <button class="remove-button">Remove</button>
+  </div>
+</div>
