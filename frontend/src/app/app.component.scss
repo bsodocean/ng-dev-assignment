@@ -26,3 +26,11 @@
 .button:active {
   background-color: #495057;
 }
+
+#loading-spinner {
+  display: none;
+}
+
+#loading-spinner.show {
+  display: block;
+}

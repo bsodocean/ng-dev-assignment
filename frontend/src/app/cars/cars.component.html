@@ -1,4 +1,36 @@
 <div class="button-container">
+  <button class="accent-button" (click)="toggleCarForm()">Add Car</button>
+  <div *ngIf="showForm" class="overlay" id="form-overlay">
+    <div class="form-container">
+      <form [formGroup]="addCarForm" (ngSubmit)="onSubmit()">
+        <h2>Add Car Details</h2>
+        <input
+          type="text"
+          placeholder="Model"
+          required
+          formControlName="model"
+        />
+        <input
+          type="text"
+          placeholder="Engine"
+          required
+          formControlName="engine"
+        />
+        <input
+          type="text"
+          placeholder="Color"
+          required
+          formControlName="color"
+        />
+        <button type="submit" class="submit-btn" [disabled]="!addCarForm.valid">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="button-container">
   <button class="car-button" (click)="filterCars('All')">All</button>
   <button class="car-button" (click)="filterCars('Octavia')">Octavia</button>
   <button class="car-button" (click)="filterCars('Kamiq')">Kamiq</button>
@@ -7,7 +39,9 @@
 </div>
 
 <div class="car-list">
+  <p *ngIf="noCarsAvailable">No cars available</p>
   <div *ngFor="let car of filteredCars; let i = index" class="car-container">
+    <h2 *ngIf="!filteredCars[i]">No cars</h2>
     <div class="car-card">
       <div class="car-info">
         <h3 class="car-model">{{ car.model }}</h3>
@@ -17,4 +51,8 @@
     </div>
     <button class="remove-button" (click)="removeCar(i)">Remove</button>
   </div>
+</div>
+
+<div id="loading-spinner" style="display: none">
+  <app-loading-spinner></app-loading-spinner>
 </div>
