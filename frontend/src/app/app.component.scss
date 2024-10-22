@@ -1,30 +1,40 @@
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
 .navbar-main {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  align-items: center;
   padding: 10px 0;
 }
 
 .button {
   display: inline-block;
-  background-color: #6c757d;
-  color: white;
-  border: none;
+  color: #4b4b4b;
+  background-color: white;
+  border: 2px solid #28a745;
   border-radius: 8px;
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 1rem;
   text-decoration: none;
-  font-family: "Arial", sans-serif;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  margin: 0 15px;
 }
 
 .button:hover {
-  background-color: #5a6268;
-  transform: translateY(-2px);
+  background-color: #4caf50;
 }
 
 .button:active {
-  background-color: #495057;
+  background-color: #28a745;
+  color: white;
+}
+
+.activebutton {
+  background-color: #28a745;
+  color: white;
 }
 
 #loading-spinner {
@@ -33,4 +43,10 @@
 
 #loading-spinner.show {
   display: block;
+}
+
+@media (max-width: 768px) {
+  .navbar-main {
+    flex-direction: column;
+  }
 }

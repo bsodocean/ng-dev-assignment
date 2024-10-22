@@ -57,7 +57,7 @@ export class CarsComponent implements OnInit {
       .get<{ data: Car[] }>('http://localhost:5001/api/cars')
       .pipe(
         map((res) => res.data),
-        delay(2000)
+        delay(1500)
       )
       .subscribe({
         next: (cars) => {

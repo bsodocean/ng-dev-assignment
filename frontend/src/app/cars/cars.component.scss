@@ -1,3 +1,7 @@
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
 .button-container {
   display: flex;
   justify-content: center;
@@ -15,7 +19,6 @@
   justify-content: center;
   align-items: center;
   z-index: 999;
-  font-family: "Open sans";
 }
 
 .form-container {
@@ -62,9 +65,10 @@ input {
 }
 
 .accent-button {
-  background-color: #6bbf6b;
-  border: 2px solid #6bbf6b;
-  color: white;
+  background-color: white;
+  border: 2px solid #2a6da5;
+  font-weight: 600;
+  color: #2a6da5;
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 8px;
@@ -73,11 +77,13 @@ input {
 }
 
 .accent-button:hover {
-  background-color: #90ee90;
+  background-color: #2a6da5;
+  color: white;
 }
 
 .accent-button:active {
-  background-color: #90ee90;
+  background-color: #2a6da5;
+  color: white;
 }
 
 .button-container {
@@ -109,7 +115,6 @@ input {
 
 .car-button {
   background-color: rgba(173, 216, 230, 0.7);
-  font-family: "Roboto";
   font-weight: 600;
   color: #333333;
   border: none;
@@ -130,7 +135,6 @@ input {
   justify-content: center;
   gap: 20px;
   padding: 20px;
-  font-family: "Roboto";
 }
 
 .car-card {

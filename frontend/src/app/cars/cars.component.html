@@ -1,5 +1,5 @@
 <div class="button-container">
-  <button class="accent-button" (click)="toggleCarForm()">Add Car</button>
+  <button class="accent-button" (click)="toggleCarForm()">Add car</button>
   <div *ngIf="showForm" class="overlay" id="form-overlay">
     <div class="form-container">
       <form [formGroup]="addCarForm" (ngSubmit)="onSubmit()">
