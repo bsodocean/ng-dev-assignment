@@ -74,13 +74,12 @@ export class CarsComponent implements OnInit {
   }
 
   filterCars(model?: string) {
-    if (model === 'All' || !model) {
-      this.filteredCars = this.cars;
-      this.noCarsAvailable = false;
-    } else {
-      this.filteredCars = this.cars.filter((car) => car.model === model);
-      this.noCarsAvailable = this.filteredCars.length === 0;
-    }
+    this.filteredCars =
+      model === 'All' || !model
+        ? this.cars
+        : this.cars.filter((car) => car.model === model);
+
+    this.noCarsAvailable = this.filteredCars.length === 0;
   }
 
   onSubmit() {
@@ -107,8 +106,16 @@ export class CarsComponent implements OnInit {
   }
 
   removeCar(index: number) {
+    const carId = this.filteredCars[index].id;
     this.filteredCars.splice(index, 1);
-    // this.http.delete(`http://localhost:5001/api/cars:822104945018`).subscribe();
-    // console.log(index);
+
+    this.http.delete(`http://localhost:5001/api/cars/${carId}`).subscribe({
+      next: (res) => {
+        console.log('Car removed succesfully', res);
+      },
+      error: (err) => {
+        console.error('Error removing car', err);
+      },
+    });
   }
 }
