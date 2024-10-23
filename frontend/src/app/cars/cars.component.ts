@@ -69,10 +69,10 @@ export class CarsComponent implements OnInit {
       )
       .subscribe({
         next: (cars) => {
-          console.log(cars);
           this.cars = cars;
           this.filteredCars = cars;
           this.isLoading.set(false);
+          console.log(this.filteredCars);
         },
         error: (error) => {
           console.error('Error loading cars', error);

@@ -1,0 +1,13 @@
+<div class="car-list">
+  <!-- <p *ngIf="noCarsAvailable">No cars available</p> -->
+  <div *ngFor="let car of cars$ | async; let i = index" class="car-container">
+    <div class="car-card">
+      <div class="car-info">
+        <h3 class="car-model">{{ car.model }}</h3>
+        <p class="car-engine">{{ car.engine }}</p>
+      </div>
+      <div class="car-color" [style.backgroundColor]="car.color"></div>
+    </div>
+    <!-- <button class="remove-button" (click)="removeCar(i)">Remove</button> -->
+  </div>
+</div>
