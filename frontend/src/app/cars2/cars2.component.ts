@@ -24,6 +24,7 @@ export interface Car {
   styleUrl: './cars2.component.scss',
 })
 export class Cars2Component implements OnInit {
+  // Exposing only the observable (name$) while keeping the BehaviorSubject private helps encapsulate the internal state and prevent outside code from directly manipulating the subject
   private carsSubject = new BehaviorSubject<Car[]>([]);
   public cars$ = this.carsSubject.asObservable();
   isLoading = signal(false);
@@ -46,7 +47,9 @@ export class Cars2Component implements OnInit {
   }
 
   filterCars(model?: string) {
-    this.cars$.pipe(map((res) => console.log(res.data))).subscribe();
+    let filteredCarsModels = this.cars$.subscribe((res) =>
+      res.forEach((car) => car.model)
+    );
   }
 
   ngOnInit(): void {
