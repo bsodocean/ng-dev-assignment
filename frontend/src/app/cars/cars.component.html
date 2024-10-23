@@ -1,7 +1,13 @@
 <div class="button-container">
   <button class="accent-button" (click)="toggleCarForm()">Add car</button>
+
   <div *ngIf="showForm" class="overlay" id="form-overlay">
     <div class="form-container">
+      <fa-icon
+        [icon]="closeIcon"
+        class="close-icon"
+        (click)="toggleCarForm()"
+      ></fa-icon>
       <form [formGroup]="addCarForm" (ngSubmit)="onSubmit()">
         <h2>Add Car Details</h2>
         <input
@@ -31,6 +37,7 @@
 </div>
 
 <div class="button-container">
+  <i class="fa-solid fa-xmark"></i>
   <button class="car-button" (click)="filterCars('All')">All</button>
   <button class="car-button" (click)="filterCars('Octavia')">Octavia</button>
   <button class="car-button" (click)="filterCars('Kamiq')">Kamiq</button>

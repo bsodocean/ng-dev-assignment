@@ -1,67 +1,16 @@
 * {
   font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .button-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.form-container {
-  background-color: white;
+  gap: 15px;
   padding: 20px;
-  border-radius: 10px;
-  width: 300px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  text-align: center;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-.submit-btn {
-  background: linear-gradient(135deg, #66cc66, #4caf50);
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  width: 100%;
-  cursor: pointer;
-  border-radius: 30px;
-  font-size: 18px;
-  font-weight: bold;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-
-.submit-btn:hover {
-  background: linear-gradient(135deg, #57b957, #45a045);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.submit-btn:active {
-  background: linear-gradient(135deg, #4caf50, #66cc66);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-  transform: translateY(2px);
+  align-items: center;
 }
 
 .accent-button {
@@ -86,18 +35,11 @@ input {
   color: white;
 }
 
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 20px;
-}
-
 .remove-button {
   display: block;
-  background-color: #b0bec5;
-  color: white;
-  border: none;
+  background: none;
+  color: #2a6da5;
+  border: 2px solid #2a6da5;
   border-radius: 5px;
   padding: 8px 15px;
   font-size: 1rem;
@@ -109,15 +51,15 @@ input {
 }
 
 .remove-button:hover {
-  background-color: #90a4ae;
-  transform: translateY(-2px);
+  background-color: #2a6da5;
+  color: white;
 }
 
 .car-button {
-  background-color: rgba(173, 216, 230, 0.7);
+  border: 2px solid #28a745;
   font-weight: 600;
+  background: none;
   color: #333333;
-  border: none;
   border-radius: 5px;
   padding: 10px 15px;
   font-size: 1rem;
@@ -126,7 +68,12 @@ input {
 }
 
 .car-button:hover {
-  background-color: rgba(135, 206, 235, 0.7);
+  background-color: #28a745;
+}
+
+.car-button:active,
+.car-button:focus {
+  background-color: #28a745;
 }
 
 .car-list {
@@ -151,20 +98,14 @@ input {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.car-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.car-color {
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-}
-
 .car-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.car-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .car-model {
@@ -178,6 +119,83 @@ input {
   font-size: 0.9rem;
   color: #555;
   margin: 0;
+}
+
+.car-color {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.form-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+
+.close-icon:hover {
+  color: #000;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #66cc66, #4caf50);
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #57b957, #45a045);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.submit-btn:active {
+  background: linear-gradient(135deg, #4caf50, #66cc66);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  transform: translateY(2px);
 }
 
 body {

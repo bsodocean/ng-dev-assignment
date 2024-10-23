@@ -4,6 +4,8 @@ import { Component, effect, OnDestroy, OnInit, signal } from '@angular/core';
 import { delay, map } from 'rxjs';
 import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export interface Car {
   id: string;
@@ -15,11 +17,17 @@ export interface Car {
 @Component({
   selector: 'app-cars',
   standalone: true,
-  imports: [CommonModule, LoadingSpinnerComponent, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    LoadingSpinnerComponent,
+    ReactiveFormsModule,
+    FontAwesomeModule,
+  ],
   templateUrl: './cars.component.html',
   styleUrl: './cars.component.scss',
 })
 export class CarsComponent implements OnInit {
+  closeIcon = faXmark;
   cars: Car[] = [];
   filteredCars: Car[] = [];
   isLoading = signal(false);
